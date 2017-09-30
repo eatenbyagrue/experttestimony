@@ -1,0 +1,362 @@
+%\documentclass[11pt, a4paper]{article}
+\documentclass[11pt, a4paper]{scrartcl}
+
+%\usepackage[a4paper,lmargin={3cm},rmargin={3.5cm}, tmargin={2.5cm},bmargin = {2.5cm}]{geometry}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[backend=biber, authordate, ibidtracker=context]{biblatex-chicago}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{color}
+
+\newcommand{\mh}[1]{\noindent\emph{#1}}
+\newcommand{\Ssa}{S_{\sigma\alpha}}
+\newcommand{\Stsa}{S^t_{\sigma\alpha}}
+\newcommand{\sa}{{\sigma\alpha}}
+\newcommand{\given}[1][]{\:#1\vert\:}
+\newcommand{\Sm}{\Stsa{}m^t_{\sa}}
+\newcommand{\CI}{\mathrel{\perp\mspace{-10mu}\perp}}
+\newcommand{\nCI}{\centernot{\CI}}
+\newcommand{\Var}{\mathrm{Var}}
+
+\renewcommand{\i}[1]{\emph{#1}}
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}[1]{{\osfamily{}#1}}
+
+\newfontfamily\osfamily{Latin Modern Roman Demi}
+\setkomafont{disposition}{\osfamily}
+\setkomafont{descriptionlabel}{\osfamily}
+
+\onehalfspacing{}
+\addbibresource{testimony.bib}
+\titleformat{\section}{\Large\bfseries\osfamily}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\osfamily}{\thesubsection}{1em}{}
+
+
+\title{\textbf{Bayesian Updating on Testimony} }
+\subtitle{And How to Deal With Expert Testimony: The Preemption View}
+\author{Conrad Friedrich \\ \texttt{conradfriedrich@posteo.net}}
+\publishers{Formal Epistemology \\ Supervising: Reuben Stern, PhD \\ MCMP @ LMU Munich \\ }
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\section{Introduction}
+How to update one's belief when hearing an expert's testimony? This paper analyses a strategy called the Preemtion View of authority testimony that deals with the special case of novice/expert testimony. To this end, a couple of examples are discussed and a broader survey of testimony in the Bayesian framework is developed by variating the type of two parameters: the granularity of reliability judgments, and the type of communication that takes place. It is then possible to interpret the Premption View in a Bayesian framework, and, to much surprise, it is argued that the Preemption View can, interpreted as described, be reduced to an edge case in the Bayesian framework.
+
+This paper starts by exploring the non-Bayesian reasoning involved in the preemption account, following closely the arguments put forward by \textcite{Constantin2017}. It becomes clear that to say much about how this affects credences a more precise account is required. Since there are several options with regards to the choice of the framework, some of these are discussed. In particular, how should the trust an agent has towards a testifier be modeled? And in what form do they communicate? A look at what has already been developed in the literatur helps. Three different interpretations of testimony in a Bayesian framework by \textcite{Goldman1999-GOLKIA}, \textcite{Bovens2003} and \textcite{Olsson2013} resp. \textcite{Angere2010} seem interesting and relevant, and their usefulness for the purposes of analysing expert testimony is discussed. Settling the framework question, the central argument of \textcite{Constantin2017} is interpreted and argued to be quite convincing in the case of traditional flat-out belief, but only a special case of Bayesian updating in a probabilisitic interpretation.
+
+A few remarks to boot. It's assumed that testifiers are honestly communicating their state of mind, that is, the veracity of the agents is not a factor in these considerations. While interesting, it does not shed additional light on this paper's question. Aside from that, the framework models both speaker and hearer, as some assumptions have to be made on both sides for communication to take place. 
+
+\subsection{Expert Testimony}
+Your doctor examines the red spots on your face and diagnoses: You have the measles! This gives you an excellent reason to believe that you actually have the measles. On the contrary, your accountant concludes that you have lupus does not give you a good reason to believe so.\footnote{This example is from \textcite{Constantin2017}.}
+
+What's the difference? Of course, your doctor knows what she is talking about. She is an \i{expert} in diagnosing patients. What is the reasonable doxastic response to an expert's testimony? This paper examines two different general types of response to a case dubbed Novice/Expert problem \parencite{Goldman2001} for those cases in which the expert is an epistemic authority for the novice, which will be defined below. Note that cases of a novice and multiple experts are \i{not} addressed in this paper, although definitely interesting.\footnote{With a few adaptions, the model could be made to fit those cases, too. As the structure is that of a social network already, it recommends itself for these kinds of questions.}
+
+The first type of doxastic response --- how to update your beliefs in the face of new evidence, in this case expert testimony --- is usually attributed to Thomas Kelly \parencite{Kelly2010-KELPDA} and called the \i{Total Evidence View}. In a rather simplistic rendition relevant to this paper, the view might be summarized as follows: The expert's testimony is added to your stock of evidence for a proposition$p$. It may have a lot of evidential weight compared to the rest of your evidence, since you are competent enough to recognize the expert as an expert. Your own evidence and considerations, however, still bear on the question whether $p$, and are aggregated with the authority's testimony. So far, so standard --- it does not seem like anything else than very standard belief updating. \textcite{Constantin2017}, following \textcite{Zagzebski2012-ZAGEAA} and \textcite{Keren2014-KERTAB}, propose a different strategy called the \i{Preemption View} based on a concept of epistemic authority, which will be discussed next.
+
+\subsection{Epistemic Authority and the Preemption View}\label{sec:undercut}
+In short, the Preemption View states that in case of authority testimony, you should rationally believe like the authority does, disregarding your own evidence in that matter. In other words, the evidential weight of your own evidence gets reduced to zero in this consideration.
+
+Let's unpack how \textcite{Constantin2017} develop this. First, the testifier has to be judged to be an expert by the agent whose doxastic attitudes are examined. They define, after \textcite{Goldman2001}, someone to be an expert in a certain area of expertise as (a) having a substantial body of evidence and (b) possessing and employing generally truth-conducive methods. Compared to a novice, an expert is an \i{epistemic superior} in her domain of expertise, someone who is more likely to be correct in matters of that domain. Epistemic superiority includes competence in evaluating evidence as well as access to substantive evidence. In particular, evidence that the expert \i{lacks} evidence that the novice possesses licences the novice to withdraw her judgment that the expert is an epistemic superior in this case. 
+
+Now, for an expert $A$ to be an \b{Epistemic Authority} for a novice $N$ in a domain $D$, $N$ has to reasonably believe that 
+\begin{enumerate}[label = (\roman*)]
+    \item $A$ is an expert about $D$, and
+    \item $A$ is epistemically superior to $N$ with respect to $D$.
+\end{enumerate}
+A domain is a set of propositions best accessible by methods the expert has at her disposal. Note that while it is likely that $A$ is \i{actually} $N$'s epistemic superior, it doesn't necessarily have to the case, since what is crucial here is $N$'s reasonable belief, which can plausibly non-veridic. 
+
+With these preliminaries in place, we can now reconstruct the central claim of \textcite{Constantin2017}. 
+\begin{description}
+    \item[Preemption View.] An authority's $A$'s testimony that $p$ in $A$'s expertise preempts all evidence of novice $N$ for or against $p$. Evidence is preempted with respect to $p$ if and only the evidence is rationally unusable for $N$ to assess $p$. 
+\end{description}
+
+In other words, the evidence is bracketed, so to speak, and loses its evidential force for $p$. It does not lose its evidential weight with respect to all other propositions, though.\footnote{As long as it Preemption View is complemented with another principle of rationality that requires something like consistency, this is not much of a problem. Otherwise it would be easy to find examples where evidential support against $p$ is preempted, but support against an obvious logical consequence of $p$, $q$, isn't, potentially leading to inconsistent belief sets.} 
+
+Let's illustrate with an example from \textcite{Constantin2017}. 
+
+\begin{singlespacing}
+\begin{quote}
+    Based on observations of everyday occurrences of pairs of events, it appears obvious to a layperson that two events are either simultaneous or they are not. Now she hears that widely respected physicists who specialize in relativity theory believe that this is not true [Such that it's not a fact of the matter whether two events are simultaneous, c.f.]. In this case, it seems completely irrational for the layperson to give any epistemic weight to her own everyday experiences in the face of the verdict of clearly identified experts. She should just follow the authority's lead. 
+\end{quote}
+\end{singlespacing}
+
+Constantin and Grundmann take this as a case clearly speaking in favor of the Preemption View, based on pre-theoretic judgments and intuitions. They argue for it by presenting the principle as a special case of another normative principle widely accepted. Specifically, preemption works off undercutting defeat. Loosely speaking, some information $d$ is an undercutting defeat for some evidence $e$ towards some proposition $p$ if it removes or weakens the evidential of $e$ for $p$. To give an oft-quoted example of \textcite{Pollock1986}: In a factory, a person looks at an assembly line of widgets that appear red. Being appeared to red-widgetly, the person believes that the widgets are red. But a worker informs the person that there's a red light shining on the widgets, defeating her belief in the color of widgets, making it irrational to hold in the light of the defeater. Preemption, then, is a result from this type of defeat: The authority's testimony undercuts the rationality of trusting your own evidence. Here lies the argument for Constantin and Grundmann's normative claim.
+{\color{red} Really go knee-deep into what an undercutting defeat in this sense is, also quote ConstantinDingens}
+
+\subsection{The Need for Precisification}
+
+While the account is promising and well-argued for in the case for flat-out, or ternary, belief, it is much less fine-tuned if you take a look at what this means for degrees of belief as a framework of doxastic states. Especially the main argument is worrisome: To my knowledge, there hasn't been a worked-out theory of undercutting defeat for degrees of belief so far. At least Constantin and Grundmann are not mentioning one. The result is that in the case of degree of belief, it is rather unclear what the conditions are for authorities to be recognized as such, or for reasons to be preempted. Worse, without a general principle of undercutting defeat to defer to, the normativity of the preemption principle stands questioned. This is not \i{necessarily} bad news for their account, as the problems do not arise for flat-out belief. But since they explicitly state to include degrees of belief in their argument, it is worth to have a closer look.  
+
+{\color{red} Flesh Out the need for precisification, especially w/ regards to undercutting defeat}
+Beyond unclear what it means to have the correct credence, see definitions and look at them properly.
+
+\subsection{Evaluation}
+
+What kind of argument can the present paper deliver? In brief, it strives to be a normative one, of course, since the question which rational strategy to employ is a strictly normative one. If there is a principle of undercutting defeat which can be derived from the standard probability axioms plus conditionalisation, the normative justification is already given, if not, something of a plausibility argument has to give.
+{\color{red} Redo this once done}
+
+\section{Bayesian Updating on Testimony}
+
+\subsection{Goldman's Account}
+
+Goldman's aim\textcite[103--130]{Goldman1999-GOLKIA} is to show that Bayesian updating the way he models it promotes epistemic value, which he sees in the accuracy or verisimilitude of a credence. 
+
+\subsection{Bovens and Hartmann's Account}
+
+
+\subsection{Olsson and Vallinder's Account}
+
+A step up in detail and the best fit for the present purposes is the account proposed by \textcite{Olsson2013} and \textcite{Angere2010}.
+
+\subsubsection{Starting Parameters}
+
+To keep things manageable, there is a single \i{true} target proposition $p$ which the agents have a credence $C^t_\alpha(p)$ towards. Each time step, agents can receive information from a \i{source}. These can be (i) other agents in the social network or (ii) their own inquiry. The objective chance that an agents inquires and gets it right is called that agent $\alpha$'s \i{aptitude}: $P(S_{\iota \alpha}p \given S_{\iota \alpha} \land p)$, where $S_{\iota \alpha}$ is the chance that agent $\alpha$ inquires for evidence, regardless of the results, and $S_{\iota \alpha} p$ the chance that she inquires and her inquiry yields $p$ as a result. The chance that she inquires at all, $P(S_{\iota \alpha})$, is called her \i{activity}. For the sake of simplicity, these chances are modeled as time invariant.
+
+Sources can be more or less reliable. The reliability is assumed to be symmetric.
+\[ 
+R_{\sigma \alpha} =_{df.} P(\Ssa p \given \Ssa \land p) = P(\Ssa \neg p \given \Ssa \land \neg p)
+\]
+This is, of course, just the agent's aptitude. Note that the reliability of an agent is modeled continuously, in contrast to the binary full reliability/randomiser approach employed in \textcite[Chp. 3]{Bovens2003}, such that with a reliability value of less than $.5$ an agents inquiry would actually be negatively correlated with the truth.
+
+Each agent trusts each source to a certain extent. This is expressed in the agent's credence in the reliability of the source:
+\[ 
+    C^t_{\alpha}(a \leqslant R_{\sa} \leqslant b) = \int_a^b \tau^t_{\sa}(\rho) d\rho
+\]
+where $\tau^t_{\sa}: [0,1] \rightarrow \mathbb{R}^+$ is a probability density function such that 
+\[
+    C^t_{\alpha}(0 \leqslant R_{\sa} \leqslant 1) =  \int_0^1 \tau^t_{\sa} (\rho) d\rho = 1
+\]which is a very plausible requirement on a rational credence function.\footnote{In fact, not obeying this would violate the probability axioms. For some reason, \textcite{Angere2010} as well as \textcite{Olsson2013} define the trust function as $\tau^t_{\sa}: [0,1] \rightarrow [0,1]$, such that it doesn't integrate to 1 (in all but the trivial case). I assume they are doing some hidden normalising that I am to near-sighted to see.}
+
+\begin{description}
+    \item[Example.] An agent $\alpha$ with a healthy trust in her own inquisitive abilities and who is not easily swayed in this trust may have a trust function $\tau^t_{\iota\alpha}$ described by a beta distribution
+\[
+    \tau^t_{\iota\alpha} (\rho) = \frac{1}{B(a,b)} \rho^{a - 1} {(1 - \rho)}^{b-1}
+\]
+with normalising beta function $B(a,b)$ and parameters $a, b$ chosen such that $\tau^t_{\iota\alpha}$ is densest around whatever a `healthy trust' amounts to, let's say 0.85. Interestingly, the shape of the curve correlates with how resilient the function behaves upon updating. More on that below.
+\end{description}
+Apart from inquiries, a source can also be another agent, through testimony. An agent $\alpha$ therefore trusts herself at time $t$ with $\tau^t_{\iota\alpha}$ and another agent $\beta$ with $\tau^t_{\beta\alpha}$.
+
+The exchange of information and the evolution of the trust functions and the credences in $p$ are the most important going-ons in this model, which I'll summarize next.
+
+\subsubsection{Inquiry and Communication} 
+
+Time progress is modeled in discrete steps. At each time step, each agent updates her credence and her trust function. The new information which motivates these changes are messages from the sources, which the agent receives if
+\begin{enumerate}[label = (\roman*)]
+    \item the agent inquires herself with probability $P(S_{\iota\alpha})$. The result of the inquiry is determined by the agent's aptitude. Or,
+    \item another agent $\beta$ is connected to agent $\alpha$ through the social network and decides to share her opinion. This is modeled, in slight deviation from the Olsson-Vallinder model, by the following conditions: 
+        \begin{enumerate}[label = (\alph*)]
+            \item Agent $\beta$ is sufficiently confident in $p$ resp. $\neg p$, determined by some fairly high threshold value for her credence, and
+            \item agent $\beta$ received herself new information in the same time step. In the current implementation, this is only fulfilled by own inquiry.  
+        \end{enumerate}
+\end{enumerate}
+
+Testimony is, of course, a matter of language, and is most plausibly modeled as a binary judgment, that is, either $p$ or $\neg p$. While there are certainly interesting cases where the testimony involves credences or levels of confidences, e.g. \ a weather forecaster stating her belief in the chance of rain tomorrow, this does in my view not apply to  
+
+\subsubsection{General Updating}
+
+Each time step, the agents update their credences and trust functions. Updating the credences is based on new messages the agent received this time step: $\Stsa m^t_{\sa}$, where $m^t_{\sa}$ is the message that $\alpha$ received from $\sigma$ (which can represent $\alpha$'s own inquiry or another agent's testimony) at $t$, and is either $p$ or $\neg p$. An agents can receive multiple messages per time step, but only one message per source, so we have to account for that as well. 
+
+In the central and most important deviation from the Olsson Vallinder model, I distinguish between the \i{Preemption} strategy and the \i{Total Evidence} strategy of dealing with expert testimony. In normal circumstances, both strategies involve the same standard bayesian updating rules, which I give in detail below. In the face of expert testimony they may differ, however, and I describe the requirements for differences as well as the differences themselves subsequently. 
+
+The updating rule is given by conditionalisation:
+\[
+    C^{t+1}_\alpha (p) = C^t_\alpha (p \given \bigwedge_{\sigma \in \Sigma^t_\alpha} \Stsa m^t_{\sa}),
+\]
+
+where $\Sigma^t_\alpha$ is the set of sources that send a message to $\alpha$ at $t$.
+
+With the assumption that sources are independent given the target proposition, the update calculates to
+\begin{equation}
+    \label{eq:upd}
+    C^t_\a (p \given \bigwedge \Sm) = \\
+     \frac{C^t_\a (p) \prod C^t_\a (\Sm \given p) }
+    {C^t_\a (p) \prod C^t_\a (\Sm \given p) +  C^t_\a (\neg p) \prod C^t_\a (\Sm \given \neg p) }.
+\end{equation}
+
+Here, again, the product and big conjunct range over all sources with a message for the agent, the subscript omitted for legibility.   
+
+The expressions about the reliability are given by:
+\begin{align*}
+    C^t_\a (\Stsa p \given p) &= C^t_\a (\Stsa) \langle \tau^t_{\sa} \rangle \\
+    C^t_\a (\Stsa \neg p \given p) &= C^t_\a (\Stsa) \langle \bar{\tau}^t_{\sa} \rangle \\
+    C^t_\a (\Stsa p \given \neg p) &= C^t_\a (\Stsa) \langle \bar{\tau}^t_{\sa} \rangle \\
+    C^t_\a (\Stsa \neg p \given \neg p) &= C^t_\a (\Stsa) \langle \tau^t_{\sa} \rangle,
+\end{align*}
+
+where $\langle \tau^t_{\sa} \rangle $ is the expected value of trust function $ \tau^t_{\sa} $ and ${\langle \bar{\tau}^t_{\sa} \rangle =_{df.} 1 - \langle \tau^t_{\sa} \rangle}$.\footnote{Detailed and very helpful derivations of these equations can be found in \textcite{Angere2010}, although in places I could not agree with the results. I implemented the updating mechanism as presented in this paper. There is not much room to detail the finer points here, only this much: Angere's final result on page 22 for the credence update intuitively can't be right, since the expression as stated there does not depend on the actual content of the message, that is, $p$ or $\neg p$, anymore, and instead just updates regardless, rendering the network communication ineffective.} 
+
+Upon receiving a message, the agent updates her trust function for that source depending on how well the message coheres with her own credence. The updated trust function can be calculated to
+\[
+    \tau^{t+1}_\sa = \tau^t_\sa (\rho) \frac{\rho \: C^t_\a (p) + (1 - \rho) C^t_\a (\neg p)}
+    {\langle \tau^t_\sa \rangle C^t_\a(p) + \langle \bar{\tau}^t_\sa \rangle C^t_\a(\neg p)}
+\]
+if $m^t_{\sa} = p$, and 
+\[
+    \tau^{t+1}_\sa = \tau^t_\sa (\rho) \frac{\rho \: C^t_\a (\neg p) + (1 - \rho) C^t_\a (p)}
+    {\langle \tau^t_\sa \rangle C^t_\a(\neg p) + \langle \bar{\tau}^t_\sa \rangle C^t_\a(p)}
+\]
+if $m^t_{\sa} = \neg p$. This entails that the trust an agents brings towards a source only changes with regard to the agents credence in p and the source's message whether p. This is one of the major shortcomings of the model, in my view, especially for the current purposes, as at no stage something like higher order evidence about the reliability of the source comes into play. 
+
+\subsubsection{Updating With Preemption}
+
+In certain cases, an agent who pursues the preemptive strategy differs in her updating rule from what is described above, namely when she recognizes another agent as an epistemic authority. I modeled the requirements in \textcite[p.9]{Constantin2017} for the recognition of an epistemic authority in the following way. 
+\begin{description} 
+    \item[Epistemic Authority] An agent $\alpha$ recognizes another agent $\beta$ as an epistemic authority regarding proposition $p$ at time $t$ if and only if  
+    \begin{enumerate}[label= (\roman*)]
+        \item $\langle \tau^t_{\beta\alpha} \rangle \geqslant T_A$, where $T_A$ is a reasonably high threshold of trust, and
+        \item $\langle \tau^t_{\beta\alpha} \rangle - \langle \tau^t_{\iota\alpha} \rangle \geqslant \Delta_A$, where $\Delta_A$ denotes a significant difference in trust level.
+    \end{enumerate}
+
+
+\end{description}
+    In plain English: Consider a layperson and an expert. For the layperson to regard the expert as an epistemic authority, she has to (i) regard the expert with a high amount of trust. The threshold is high, somewhere above $.8$. Condition (ii) requires that the expert enjoys a significantly higher trust from the layperson than the layperson trusts her own abilities to evaluate evidence. This might also be modeled as a ratio, but in this case is not crucial.
+
+As soon as an agent recognizes another as an epistemic authority, her updating pattern changes significantly. First, she stops to gather evidence herself completely. Second, instead of updating according to all her evidence and sources, she ignores all other messages and instead adopts the authority's opinion.
+
+Constantin and Grundmann do not specify a precise credence as a proper response in this case, as they assume that the layperson knows of the expert's credence. In this model, however, communication happens on a binary basis.
+ 
+I argue that the right credence for the layperson to adopt in this case is just $\langle \tau^t_{\beta\alpha} \rangle$ (if the message is $p$, or $1 - \langle \tau^t_{\beta\alpha} \rangle$ if $\neg p$, the case is an exact analogous). While it is intuitively appealing, it's also a consequence from some rather innocuous assumptions. The argument goes as follows. 
+
+\textcite[p.12]{Constantin2017} define the effect of preemption as making any evidence for or against the target proposition rationally unusable for the agent. That is, whatever first-order evidence she gathered beforehand, as soon as she recognizes an epistemic authority as such regarding that proposition, two things happen: 
+
+First, she is rationally required to disregard all her evidence. It is quite uncontroversial to regard a credence around $.5$ to be rational in the case of total absence of evidence (extreme subjective Bayesians excluded). But being indifferent is certainly not a bad thing in this case. Formally, this can be described as a screening-off. Let $\beta$ be an authority for $\alpha$. Then $\a$'s evidence is preempted by $S_{\beta\a}$ iff for all (relevant) evidence $E$, 
+\[ 
+    p \CI_{C_\a} E \given S_{\beta\a}, 
+\]
+that is, relative to $\a$'s credence function, $p$ is independent of $E$ given $S_{\beta\a}$. That is, the rational requirement the authority's testimony induces on the preemption strategist's credences.
+
+Second, the only available evidence is the authority's testimony. The agent classically conditions on that. Given the above, this is calculated quickly. Equation~\ref{eq:upd} reduces in this case to 
+
+\[
+    C^{t+1}_\a (p) = \frac{C^t_\a(p) \langle \tau^t_{\beta\a} \rangle}
+    {C^t_\a(p) \langle \tau^t_{\beta\a} \rangle + C^t_\a(\neg p) \langle \bar{\tau}^t_{\beta\a} \rangle}
+\]
+and because I require as mentioned $C^t_\a(p) = C^t_\a( \neg p)$, simple algebra gives 
+\[
+    C^{t+1}_\a (p) = \langle \tau^t_{\beta\a} \rangle.
+\]
+
+The trust functions update in the usual way. They are \i{not} affected by the preemption. This is, in my opinion, actually a strong suit of the model. \textcite[p. XX]{Constantin2017} describe a range of cases in which the purported authority make an  \i{outrageous} claim which is so obviously wrong that the agent should lessen her trust in the authority and do not regard her as such anymore. This is reflected in the model: If the agents beliefs something to an extremely high degree, and a purported authority says otherwise, it is possible to lower the trust in the authority and thereby make her lose her status as an authority for the agent. 
+
+
+\section{The Preemption View for Degrees of Belief}
+
+\subsection{Undercutting Defeat With Numbers}
+
+At the heart of Constantin and Grundmann's argument lies the notion of undercutting defeat. While they distinguish between several types of undercutting defeat, they recognize that the different types have a central property in common they ``screen off'' evidence from a hypothesis \parencite[fn. 18]{Constantin2017}. The notion is meant to be understood fairly intuitively, in the sense that the defeater reduces the evidential impact the evidence has on a rational attitude towards the hypothesis. As described above, the standard examples illustrate this point. The choice of words is telling when it comes to the interpretation of an undercutting defeater as screening off the relevant evidence, since it hints at the property of a random variable screening of another from a third given a subjective probability function. Let's look at a general case of evidence confirming or disconfirming a hypothesis. Somewhat more precise, here is how Mike Titelbaum describes it:
+
+\begin{description}
+    \item[Screening Off.] $D$ screens off $E$ from $H$ when $E$ is unconditionally relevant to $H$ but not relevant to $H$ conditional on either $D$ or $\neg D$.\footnote{cf.\ \textcite[270]{Titelbaum2017}}
+\end{description}
+
+This amounts to three conditions for an agent's credence function $\Pr$:\footnote{cf.\ \textcite[70]{Titelbaum2017}}
+\begin{align*}
+    \Pr(H \given E) &\not = \Pr(H)\\
+    \Pr(H \given E \land D) &= \Pr(H \given D)\\
+    \Pr(H \given E \land \neg D) &= \Pr(H \given \neg D)
+\end{align*} Or, in other words, again: $E$ is evidence for or against $H$. But conditioning on $D$ as well, $D$ screens off all evidential impact that $E$ has on $H$, and the same goes for $\neg D$. Titelbaum specifically requires the screening off on the negation, too, but that is not crucial for the present purposes.
+
+Some parallels with the concept of undercutting defeat may already be visible, as the letters for the propositions have been chosen rather ominously. It is still a good idea to look at approaches from the literature, where researching scholar isn't particularly spoiled with papers on this topic. Matthes Kotzen's approach can be summarized for the present purposes like this:  
+\begin{description}
+    \item[Undercutting Defeat, Kotzen.]$D$ is an undercutting defeater for the evidence that $E$ provides for $H$ (relative to background information $K$) just in case \linebreak ${\mathfrak{c}(E, H, K) > \mathfrak{c}(E. H, K \land D)}$.\footnote{cf. \textcite[13]{Kotzen2010}}
+\end{description}
+The function $\mathfrak{c}$ is here a placeholder for a confirmation measure which remains to be selected, but in any case of course makes use of a probability function.\footnote{For a discussion and overview cf. \textcite{Fitelson}.} What does Kotzen's definition say? Basically that the degree to which evidence confirms the hypothesis is reduced when adding a defeater to one's stock of beliefs. 
+
+Note that there are differences betweens Kotzen's proposal and mere screening off, which is a lot stronger than Kotzen requires. Screening off prescribes absolutely no evidential weight left after conditioning on the defeater, while Kotzen merely needs a decrease in evidential support. First assume that $E$ is evidence for $H$, such that $\mathfrak{c}(E,H,K) > 0$. When the measure function is, for example, assumed to be defined naively as 
+
+\[\mathfrak{c}(E, H, K) =_{df.} \Pr(H \given E \land K) - \Pr(H \given K) ,\]
+
+then the undercutting defeat condition requires that  
+\begin{equation}\label{eq:undercut}
+\Pr(H \given E \land K) - \Pr(H \given K)  >  \Pr(H \given E \land K \land D) - \Pr(H \given K \land D)  \geqslant 0.
+\end{equation}
+
+Which is just to say that for $D$ to be an undercutting defeater for $E$ regarding $H$, conditioning on $D$ lowers $E$'s degree of confirmation for $H$. Note that the requirement states that the second term $ \Pr(H \given E \land K \land D) - \Pr(H \given K \land D) $ is greater \i{or equal} to 0. If equal, the requirement of screening off is fulfilled, since then $\Pr(H \given E \land K \land D) = \Pr(H \given K \land D)$ (We may ignore the background knowledge $K$ to make it fit the description of screening off above).
+
+So there seems to be an interesting connection between the notion of undercutting defeat and screening off: In the most extreme case, an undercutting defeater screens off the evidence it defeats from the hypothesis. Such that screening off is a sufficient, but not a necessary condition for undercutting defeat.
+
+By constituting an extreme case, screening off may be thought of as what in the case of flat-out belief is called a \i{full undercutting defeater}. No evidential import is left, the evidence is fully undercut. Constantin and Grundmann contrast this with another concept called \i{partial undercutting defeater}. A defeater can only have partial impact if it's support isn't rock solid or if it just does not have enough evidential weight to completely deprive the original evidence from its import. This of course neatly fits the account described here: An undercutting defeater is usually partial and becomes a full undercutting defeater only in extreme cases. One has to add, that the account Constantin and Grundmann elicit very probably mean something slightly else here: Their focus is on whether a belief stays epistemically justified and, one might think, envision something like a threshold of justifiedness that is somehow tied to the degree of confirmation the evidence licenses for the hypothesis. If a defeater is strong enough such that the belief loses its justification given the evidence and defeater, the defeater is considered full. There might still be evidential import left, but not enough to render the belief justified. But since that is all flat-out belief talk and there is not a straightforward translation into degree of belief talk,\footnote{Although, of course, there are attempts, cf.\ e.g.\ \textcite{Pettigrew2017}} it might do for the present purposes to got with the above distinction between partial and full undercutting defeat. 
+
+How does this relate to another central notion, the \i{rebutting} or \i{opposing} defeater? First a look at what \textcite[11]{Constantin2017} define:  
+
+\begin{quote}
+Roughly, $d$ is a  rebutting defeater for a subject S’s belief that $p$ on the basis of evidence $E$, iff $d$ is a prima facie reason that $S$ has to believe that $\neg p$, such that  the resulting total evidence  $E+d$ is neither equivalent to $E$, nor to $d$. 
+\end{quote}
+
+In other words, the rebutting defeater is just any old evidence for the negation of the hypothesis. That is, additionally to the requirement of undercutting, the rebutting defeater needs to to provide positive evidence for the negation of the hypothesis. Kotzen defines:
+
+\begin{description}
+    \item[Rebutting Defeat, Kotzen.] $D$ is a rebutting defeater for the evidence that $E$ provides for $H$ just in case: $\Pr(H \given E) > \Pr(H \given E \land D)$ and $\Pr(H \given D) > \Pr(H)$.
+\end{description}
+
+How does the rebutting defeater also undercut? Suppressing the background knowledge $K$ for the moment, we have directly 
+\[{ \Pr(H \given E) - \Pr(H)  >  \Pr(H \given E \land D) - \Pr(H\given D)  \geqslant 0.}\]
+This result should make intuitive sense: A rebutting defeater, meaning a reason against the hypothesis, reduces the evidential import of the evidence if added to one's total evidence. 
+
+Some things have to be clarified with regards to the probability function in question. It is not really clear from what was said so far how we can recover the probabilities where we did not condition on the evidence already, because, let's assume, the agent reached her current probability function through classic conditionalisation. Then her subjective probabilities of course already include all the available evidence acquired at this point. But to talk about defeaters like above, her probability assignment \i{without} conditioning on the evidence is highly relevant. The agent needs to somehow forget what she learned with certainty already. Since this is not intended in the Bayesian paradigm, concept like hypothetical priors is introduced. Hypothetical priors are such that they represent an agent's credences before she learned anything empirical.\footnote{cf. \textcite[Ch. 4]{Levi1980}, \textcite[110]{Titelbaum2017}} Then, assuming she updated her beliefs always and only in accord with conditionalisation, an agent's credences at a time $t$ are represented by a probability function that results from conditioning her hypothetical priors on her total evidence at that time.
+
+That is, let $E_t$ be the agent's total evidence at time $t$. Then her probability function at $t$ results on conditioning her hypothetical priors on the evidence up to this point such that $\Pr_t(\cdot) = \Pr_H(\cdot \given E_t)$. Now the connection to undercutting defeat seems to be this: Suppose the agent learns of the potential defeater at time $t$. To determine whether equation~\ref{eq:undercut} is satisfied, the probability function to represent her credences has to be chosen. The correct function $\Pr_c$\footnote{The $c$ is for `correct'!} seems to be determined by her hypothetical priors conditioned on her available evidence at that time \i{without} all evidence to be defeated and the defeater. Formally: $ \Pr_c(\cdot) = \Pr_H (\cdot \given E_t \setminus (E \land D))$. Then this function $\Pr_c$ can be tested against equation~\ref{eq:undercut}.
+
+\subsection{Authority Testimony in Olsson and Vallinder's Model}
+
+The interesting question now is how to these potentially accurate precisifications fare when applied to the case at hand: the Preemption View interpretation of authority testimony. The interplay of undercutting defeat and authority testimony has been described at length in Section~\ref{sec:undercut}. The setup, quickly summarized: Constantin and Grundmann claim that an expert's testimony that $p$, who you recognize as more reliable than you in this domain, preempts your evidence for $p$ and constitutes an undercutting defeater. Even if you agree withe expert! Additionally, the testimony gives you excellent reason to believe that $p$ is the case.  
+With the preliminaries this in place, can all this talk of undercutting defeat and authority testimony be followed by a proper integration into a Bayesian Framework? After all, that's what we set out to do. Since this is not straightforward, in the following, I develop different approaches and discuss them in turn.
+
+The following sections finally try to answer the question: How to update one's credences given expert testimony, or formally, 
+\[
+    \Pr(p \given \Sm) =\,?
+\]
+\subsubsection{The Thresholding Method}
+
+The approach that seems to be the most obvious is as closely modeled after Constantin and Grundmann as possible. The gist is this: Whether you accept an expert as an authority is either true or false, and is completely determined by the following principle: 
+
+\begin{description} 
+    \item[Epistemic Authority] An agent $\alpha$ recognizes another agent $\beta$ as an epistemic authority regarding proposition $p$ at time $t$ if and only if  
+    \begin{enumerate}[label= (\roman*)]
+        \item $\langle \tau^t_{\beta\alpha} \rangle \geqslant T_A$, where $T_A$ is a reasonably high threshold of trust, and
+        \item $\langle \tau^t_{\beta\alpha} \rangle - \langle \tau^t_{\iota\alpha} \rangle \geqslant \Delta_A$, where $\Delta_A$ denotes some difference in trust level.
+    \end{enumerate}
+\end{description}
+
+In plain English: Consider a layperson and an expert. For the layperson to regard the expert as an epistemic authority, she has to (i) regard the expert with a high amount of trust. The threshold is high, somewhere above $.8$. Condition (ii) requires that the expert enjoys a higher trust from the layperson than the layperson trusts her own abilities to evaluate evidence. This might also be modeled as a ratio, but in this case is not crucial.
+
+The advantage of the Olsson Vallinder model becomes self-evident here: The trust level that decides over authority acceptance is endogenous to the model. Somewhat similar to the Lockean Thesis concerning the relation of full belief and partial belief, this approach connects recognizing an authority to a level of trust in that person by a threshold measure. If that threshold is crossed, and the trust level is higher than the agent's own, the authority is recognized as such. 
+
+How does that help with the updating rule? We now have an exact criterion, when an agents recognizes an authority. Now let's add two further assumptions. First, the  authorities testimony generates a \i{full} undercutting defeater for all of the agent's relevant evidence. Second, where there is no evidence, one should be indifferent --- the principle of indifference.\footnote{Which is not to bold an assumption, I presume. Also, cf. \textcite[Ch. 5.3]{Titelbaum2017} for a helpful discussion and its relation to the maximum entropy principle.}   
+
+The full undercutting defeater of the authority testimony has the effect that it screens of all relevant first-order evidence such that $\Pr(p \given E \land \Sm) = \Pr(p \given \Sm)$. For simplification the indications for hypothetical priors are omitted.
+
+\[
+    C^{t+1}_\a (p) = \frac{C^t_\a(p) \langle \tau^t_{\beta\a} \rangle}
+    {C^t_\a(p) \langle \tau^t_{\beta\a} \rangle + C^t_\a(\neg p) \langle \bar{\tau}^t_{\beta\a} \rangle}
+\]
+and because I require as mentioned $C^t_\a(p) = C^t_\a( \neg p)$, simple algebra gives 
+\[
+    C^{t+1}_\a (p) = \langle \tau^t_{\beta\a} \rangle.
+\]
+
+
+
+
+\subsubsection{The It's-Just-Bayesian Method}
+
+\subsubsection{The Incomplete Method}
+
+\begin{itemize}
+    \item Look like it'll work out! The condition is fulfilled! But in fact, only rebutting, of course. Visible in cases of two competing authorities
+\end{itemize}
+
+
+
+
+
+\printbibliography{}
+\end{document}
+
