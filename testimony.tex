@@ -361,9 +361,10 @@ The question is whether the authority's testimony constitutes an undercutting de
 
 To find an answer, we need to determine what $E$ actually is in our model and how to recover the hypothetical priors for this probability function, since all we have is the \i{current} probability function after the agent learned all the evidence and before she learned of the defeater. 
 
-Since this is not easily obtainable, the way proposed here might seem like a sleight of hand, but may be reconciled with some argument. Recall that the agent has a trust function for her own inquiries in matters of $p$, or from that domain, as well. It may not be completely off to interpret the agent's current credence in that model as a result of conditioning on her own inquiry. That is, here rational credence after her own evaluation equals her own expected trust in this matter. {\color{red} This might be flesjhed out a bit, maybe with a formula, too}
+Since this is not easily obtainable, the way proposed here might seem like a sleight of hand, but may be reconciled with some argument. Recall that the agent has a trust function for her own inquiries in matters of $p$, or from that domain, as well. It may not be completely off to interpret the agent's current credence in that model as a result of conditioning on her own inquiry. That is, here rational credence after her own evaluation equals her own expected trust in this matter. This may seem like a variant of Lewis' Principal Principle, in a way, but is this this model's answer to what a reflective person should assign her credences. You just treat yourself as another source for information.\footnote{This is, of course, somewhat contentious and raises a number of concerns and questions. A generally interesting issue, however, for the present purposes I take it as plausible enough.}   
 
-If we additionally adopt the principle of indifference again, such that  we have
+
+If we additionally adopt the principle of indifference again, we have
 
 \begin{table}[ht]
 \centering
@@ -374,13 +375,9 @@ $\Pr(p \given S_{\iota}p )$ & 0.5 & $\Pr(p \given S_\iota p \land S_\beta p)$ & 
 \end{tabular}
 \end{table}
 
-That $\beta$ is an authority for the agent requires $\langle \tau_\beta \rangle > \langle \tau_\iota \rangle$.
+That $\beta$ is an authority for the agent requires $\langle \tau_\beta \rangle > \langle \tau_\iota \rangle$. Plugging this into the inequality for undercutting defeat, one can quickly see that in most plausible cases, the condition is fulfilled.
 
-In the case of $m_\beta = p$,  
-
-In the case of $m_\beta = \neg p$, 
-
-Such that it seems like the standard Bayesian updating already respects our formal demands of preemption. The evidence is not completely preempted, that much is true, but it seems like it doesn't really have any real impact on the result any more.  
+It seems like the standard Bayesian updating already respects our formal requirement for preemption, then. The evidence is not completely preempted, that much is true, but it seems like it doesn't really have any real impact on the result any more.  
 
 But, there is a case with an intuitive judgment which I consider a knock-down argument. Suppose not one, but two competing authorities. So far this account hasn't talked about two authorities, but it's very straightforward to integrate two authorities in the orthodox Bayesian way. But first, check your intuitions. Two experts you regard as authorities of a field with about equal trust contradict each other. One says $p$, the other $\neg p$. Isn't the proper response here to be very cautious with a judgment, and most probably suspend? 
 
@@ -391,11 +388,14 @@ Conditioning on both opinions, as was just proposed, however, delivers the verdi
 
 What, then, potentially alleviates the troublesome news? I think the answer lies in how the trust functions themselves are updated. Here is the rationale: The testimony of an authority diminishes the agent's trust in her own inquisitive abilities regarding the current proposition and propositions just like it. The degree of diminished trust is proportional to the trust the agent places in the authority, and anti-proportional to the trust an agent places in herself. Such that were there a host of experts all testifying, the expected value of trust in her own reasoning and inquisitive abilities in this matter tends to $0.5$. 
 
-How can this idea be made to fit in the Olsson Vallinder model? What's needed is a condition that updates the trust function $\tau_{\iota}(\rho) = \frac{d}{d\rho} \Pr(R_{\iota} = \rho \given S_{\beta})$ such that $\langle \tau_{\iota} \rangle$ tends to $0.5$ when either a sequence of authorities testify or the trust in an authority is particularly high. For this, some general principle has to be invoked which links the rationality of learning the authority's testimony with credences about the agent's own reliability regarding $p$. It might very well be that the notion of an undercutting defeater might play a decisive role here. As it stands, I do not have an answer as to how exactly this updating would calculate, but would very much like to develop something along this line in the future. For this paper, then, this question has to unsatisfactorily go unanswered. 
+How can this idea be made to fit in the Olsson Vallinder model? First, we have to again use the sleight of hand from above and regard the prior credence as the result of a conditionalisation of an indifferent credence on one's own inquiry. Additionally, there is a tacit assumption explicit in \textcite{Angere2010} that is briefly mentioned on page~\pageref{eq:upd}: The source messages are assumed to be probabilistically independent. 
+\[\Pr \left( \bigwedge S_{\sigma}m_\sigma \given m_\sigma\right) = \prod \Pr\left( S_{\sigma}m_\sigma \given m_\sigma\right)\] 
+But this, as just laid out, does not hold here. Consider the case of two conflicting authority testimonies $S_\beta$ and $S_\gamma$. The testimony of the authorities lower the credence in the reliability of one's own reasoning. That is, $\Pr(S_\iota p \given p) \geqslant \Pr(S_\iota p \given p \land S_\beta m_\beta \land S_\gamma m_\gamma)$. This simple condition makes sure that the updated credence is always less or equal than if we would assume source independence, as can easily be checked by plugging it into Equation~\ref{eq:upd} on page \pageref{eq:upd}. But how is the new likelihood calculated? Frankly, I haven't been able to figure it out yet do to time constraints, so this paper is very much still work in progress. I would love some input and discussion on it, though!
 
-But we \i{can} have a look at what this means for the credence update:  
+Apart from the missing derivation, this approach seems to be promising. It does justice to the notion of an undercutting defeater while still fit into a Bayesian framework. 
 
 \section{Conclusion}
+
 Still open questions: Why, really, should an authority who mostly agrees with you constitute an undercutting defeat for your belief? In the case of peer disagreement, it's different!  
 \printbibliography{}
 \end{document}
