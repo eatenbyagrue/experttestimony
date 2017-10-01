@@ -14,15 +14,18 @@
 \usepackage{booktabs}
 
 \newcommand{\mh}[1]{\noindent\emph{#1}}
+\newcommand{\Ss}{S_{\sigma}}
 \newcommand{\Ssa}{S_{\sigma\alpha}}
 \newcommand{\Stsa}{S^t_{\sigma\alpha}}
 \newcommand{\sa}{{\sigma\alpha}}
 \newcommand{\given}[1][]{\:#1\vert\:}
-\newcommand{\Sm}{\Stsa{}m^t_{\sa}}
+%\newcommand{\Sm}{\Stsa{}m^t_{\sa}}
+\newcommand{\Sm}{\Ss{}m_\sigma}
 \newcommand{\CI}{\mathrel{\perp\mspace{-10mu}\perp}}
 \newcommand{\nCI}{\centernot{\CI}}
 \newcommand{\Var}{\mathrm{Var}}
 
+\renewcommand{\Pr}{\text{Pr}}
 \renewcommand{\i}[1]{\emph{#1}}
 \renewcommand{\a}{\alpha}
 \renewcommand{\b}[1]{{\osfamily{}#1}}
@@ -48,23 +51,25 @@
 \tableofcontents
 \newpage
 \section{Introduction}
-How to update one's belief when hearing an expert's testimony? This paper analyses a strategy called the Preemtion View of authority testimony that deals with the special case of novice/expert testimony. To this end, a couple of examples are discussed and a broader survey of testimony in the Bayesian framework is developed by variating the type of two parameters: the granularity of reliability judgments, and the type of communication that takes place. It is then possible to interpret the Premption View in a Bayesian framework, and, to much surprise, it is argued that the Preemption View can, interpreted as described, be reduced to an edge case in the Bayesian framework.
 
-This paper starts by exploring the non-Bayesian reasoning involved in the preemption account, following closely the arguments put forward by \textcite{Constantin2017}. It becomes clear that to say much about how this affects credences a more precise account is required. Since there are several options with regards to the choice of the framework, some of these are discussed. In particular, how should the trust an agent has towards a testifier be modeled? And in what form do they communicate? A look at what has already been developed in the literatur helps. Three different interpretations of testimony in a Bayesian framework by \textcite{Goldman1999-GOLKIA}, \textcite{Bovens2003} and \textcite{Olsson2013} resp. \textcite{Angere2010} seem interesting and relevant, and their usefulness for the purposes of analysing expert testimony is discussed. Settling the framework question, the central argument of \textcite{Constantin2017} is interpreted and argued to be quite convincing in the case of traditional flat-out belief, but only a special case of Bayesian updating in a probabilisitic interpretation.
+How to update one's belief when hearing an expert's testimony? This paper analyses a strategy called the Preemption View of authority testimony that deals with the special case of novice/expert testimony. To this end, a couple of examples are discussed and a broader survey of testimony in the Bayesian framework is developed. It is then possible to interpret the Preemption View using degrees of belief. 
+
+This paper starts by exploring the non-Bayesian reasoning involved in the preemption account, following closely the arguments put forward by \textcite{Constantin2017}. They develop this argument mainly for flat-out belief. It becomes clear very quickly that to say much about how this affects credences, a more precise account is required. Since there are several options with regards to the choice of the framework, some of these are discussed. In particular, how should the trust an agent has towards a testifier be modeled? And in what form do they communicate? A look at what has already been developed in the literatur helps. Three different interpretations of testimony in a Bayesian framework by \textcite{Goldman1999-GOLKIA}, \textcite{Bovens2003} and \textcite{Olsson2013} resp. \textcite{Angere2010} seem interesting and relevant, and their usefulness for the purposes of analysing expert testimony is discussed. Settling the framework question, the central argument of \textcite{Constantin2017} is interpreted and translated into a context of degree of belief. For this, the notion of undercutting defeat gets some analysis, and some proposals are made to give a proper representation of the Preemption View in precise terms. 
 
 A few remarks to boot. It's assumed that testifiers are honestly communicating their state of mind, that is, the veracity of the agents is not a factor in these considerations. While interesting, it does not shed additional light on this paper's question. Aside from that, the framework models both speaker and hearer, as some assumptions have to be made on both sides for communication to take place. 
 
 \subsection{Expert Testimony}
 Your doctor examines the red spots on your face and diagnoses: You have the measles! This gives you an excellent reason to believe that you actually have the measles. On the contrary, your accountant concludes that you have lupus does not give you a good reason to believe so.\footnote{This example is from \textcite{Constantin2017}.}
 
-What's the difference? Of course, your doctor knows what she is talking about. She is an \i{expert} in diagnosing patients. What is the reasonable doxastic response to an expert's testimony? This paper examines two different general types of response to a case dubbed Novice/Expert problem \parencite{Goldman2001} for those cases in which the expert is an epistemic authority for the novice, which will be defined below. Note that cases of a novice and multiple experts are \i{not} addressed in this paper, although definitely interesting.\footnote{With a few adaptions, the model could be made to fit those cases, too. As the structure is that of a social network already, it recommends itself for these kinds of questions.}
-
-The first type of doxastic response --- how to update your beliefs in the face of new evidence, in this case expert testimony --- is usually attributed to Thomas Kelly \parencite{Kelly2010-KELPDA} and called the \i{Total Evidence View}. In a rather simplistic rendition relevant to this paper, the view might be summarized as follows: The expert's testimony is added to your stock of evidence for a proposition$p$. It may have a lot of evidential weight compared to the rest of your evidence, since you are competent enough to recognize the expert as an expert. Your own evidence and considerations, however, still bear on the question whether $p$, and are aggregated with the authority's testimony. So far, so standard --- it does not seem like anything else than very standard belief updating. \textcite{Constantin2017}, following \textcite{Zagzebski2012-ZAGEAA} and \textcite{Keren2014-KERTAB}, propose a different strategy called the \i{Preemption View} based on a concept of epistemic authority, which will be discussed next.
+What's the difference? Of course, your doctor knows what she is talking about. She is an \i{expert} in diagnosing patients. What is the reasonable doxastic response to an expert's testimony? This paper examines two different general types of response to a case dubbed Novice/Expert problem \parencite{Goldman2001} for those cases in which the expert is an epistemic authority for the novice, which will be defined below. The first type of doxastic response --- how to update your beliefs in the face of new evidence, in this case expert testimony --- is usually attributed to Thomas Kelly \parencite{Kelly2010-KELPDA} and called the \i{Total Evidence View}. In a rather simplistic rendition relevant to this paper, the view might be summarized as follows: The expert's testimony is added to your stock of evidence for a proposition$p$. It may have a lot of evidential weight compared to the rest of your evidence, since you are competent enough to recognize the expert as an expert. Your own evidence and considerations, however, still bear on the question whether $p$, and are aggregated with the authority's testimony. So far, so standard --- it does not seem like anything else than very standard belief updating. Consequently, the precisification of this approach will just imitate the orthodox Bayesian conditionalization. \textcite{Constantin2017}, following \textcite{Zagzebski2012-ZAGEAA} and \textcite{Keren2014-KERTAB}, propose a different strategy called the \i{Preemption View} based on a concept of epistemic authority, which will be discussed next.
 
 \subsection{Epistemic Authority and the Preemption View}\label{sec:undercut}
+
 In short, the Preemption View states that in case of authority testimony, you should rationally believe like the authority does, disregarding your own evidence in that matter. In other words, the evidential weight of your own evidence gets reduced to zero in this consideration.
 
-Let's unpack how \textcite{Constantin2017} develop this. First, the testifier has to be judged to be an expert by the agent whose doxastic attitudes are examined. They define, after \textcite{Goldman2001}, someone to be an expert in a certain area of expertise as (a) having a substantial body of evidence and (b) possessing and employing generally truth-conducive methods. Compared to a novice, an expert is an \i{epistemic superior} in her domain of expertise, someone who is more likely to be correct in matters of that domain. Epistemic superiority includes competence in evaluating evidence as well as access to substantive evidence. In particular, evidence that the expert \i{lacks} evidence that the novice possesses licences the novice to withdraw her judgment that the expert is an epistemic superior in this case. 
+Of course, its crucial to exactly specify what is meant by \i{authority} and where the rationality of the view stems from. What makes it rational to deviate from more standard belief updating?
+
+Let's unpack how \textcite{Constantin2017} develop this. Picture a simple testimony situation. First, the testifier has to be judged to be an expert by the agent whose doxastic attitudes are examined. They define, after \textcite{Goldman2001}, someone to be an expert in a certain area of expertise as (a) having a substantial body of evidence and (b) possessing and employing generally truth-conducive methods. Compared to a novice, an expert is an \i{epistemic superior} in her domain of expertise, someone who is more likely to be correct in matters of that domain. Epistemic superiority includes competence in evaluating evidence as well as access to substantive evidence. In particular, if the novice has second-order evidence that the expert \i{lacks} evidence which the novice herself possesses, the novice is licensed to withdraw her judgment that the expert is an epistemic superior in this case. 
 
 Now, for an expert $A$ to be an \b{Epistemic Authority} for a novice $N$ in a domain $D$, $N$ has to reasonably believe that 
 \begin{enumerate}[label = (\roman*)]
@@ -88,164 +93,112 @@ Let's illustrate with an example from \textcite{Constantin2017}.
 \end{quote}
 \end{singlespacing}
 
-Constantin and Grundmann take this as a case clearly speaking in favor of the Preemption View, based on pre-theoretic judgments and intuitions. They argue for it by presenting the principle as a special case of another normative principle widely accepted. Specifically, preemption works off undercutting defeat. Loosely speaking, some information $d$ is an undercutting defeat for some evidence $e$ towards some proposition $p$ if it removes or weakens the evidential of $e$ for $p$. To give an oft-quoted example of \textcite{Pollock1986}: In a factory, a person looks at an assembly line of widgets that appear red. Being appeared to red-widgetly, the person believes that the widgets are red. But a worker informs the person that there's a red light shining on the widgets, defeating her belief in the color of widgets, making it irrational to hold in the light of the defeater. Preemption, then, is a result from this type of defeat: The authority's testimony undercuts the rationality of trusting your own evidence. Here lies the argument for Constantin and Grundmann's normative claim.
-{\color{red} Really go knee-deep into what an undercutting defeat in this sense is, also quote ConstantinDingens}
+Constantin and Grundmann take this as a case clearly speaking in favor of the Preemption View, based on pre-theoretic judgments and intuitions. Note how they stress that it would be \i{completely} irrational to give \i{any} evidential weight, which is a point that, as we'll see, does not fit very well with degrees of belief. They argue for it by presenting the principle as a special case of another normative principle widely accepted. Specifically, preemption works off undercutting defeat. Loosely speaking, some information $d$ is an undercutting defeat for some evidence $e$ towards some proposition $p$ if it removes or weakens the evidential of $e$ for $p$. To give an oft-quoted example of \textcite{Pollock1986}: In a factory, a person looks at an assembly line of widgets that appear red. Being appeared to red-widgetly, the person believes that the widgets are red. But a worker informs the person that there's a red light shining on the widgets, defeating her belief in the color of widgets, making it irrational to hold in the light of the defeater. Preemption, then, is a result from this type of defeat: The authority's testimony undercuts the rationality of trusting your own evidence. Here lies the argument for Constantin and Grundmann's normative claim. They claim that, given authority testimony, you can't base your belief on the result of your own reasoning processes anymore. Well, you \i{can}, but only on pain of irrationality. Perhaps counter to intuition, this also applies to cases where the authority agrees with your opinion. In the case of flat-out belief, this does not do much in terms of doxastic attitudes, as soon as you talk about credences, however, this has significant consequences. How to update your credence now?   
+
+To appreciate the argument in this paper, which revolves all around the concept of undercutting defeat, it's expedient to have a look at what that's actually is. Constantin and Grundmann define it in the following way, following \textcite{Pollock1976-POLKAJ-4}:
+\begin{quote}
+
+Matters are different in the case of undercutting defeaters: $d$ is an  undercutting defeater for a subject $S$’s belief that $p$ on the basis of evidence $E$, iff $d$ is a prima facie reason that $S$ has to believe that relying on $E$ alone in assessing $p$ would not support the likelihood of $S$ being right about $p$ such that assessing $p$ on this basis would not be different from pure guessing. 
+
+\end{quote}
+
+This is quite a bit to unravel. The use of a counterfactual make the treatment a bit cumbersome, a point that we'll meet again when trying to find the right probability function (Section~\ref{sec:undercut}). But generally: Suppose you don't have any evidence for or against $p$. That's is the situation learning the defeater $d$ puts you in. 
+
+That this happens epistemically when receiving authority testimony is the source of Constantin and Grundmann's normative claim. They argue for it by appeal to intuition on thought experiments, and I agree that there is definitely something to it. I do not necessarily join them in the normative force of complete irrationality of any evidential weight of the preempted evidence, however, as will be discussed below.
 
 \subsection{The Need for Precisification}
 
 While the account is promising and well-argued for in the case for flat-out, or ternary, belief, it is much less fine-tuned if you take a look at what this means for degrees of belief as a framework of doxastic states. Especially the main argument is worrisome: To my knowledge, there hasn't been a worked-out theory of undercutting defeat for degrees of belief so far. At least Constantin and Grundmann are not mentioning one. The result is that in the case of degree of belief, it is rather unclear what the conditions are for authorities to be recognized as such, or for reasons to be preempted. Worse, without a general principle of undercutting defeat to defer to, the normativity of the preemption principle stands questioned. This is not \i{necessarily} bad news for their account, as the problems do not arise for flat-out belief. But since they explicitly state to include degrees of belief in their argument, it is worth to have a closer look.  
 
-{\color{red} Flesh Out the need for precisification, especially w/ regards to undercutting defeat}
-Beyond unclear what it means to have the correct credence, see definitions and look at them properly.
+Here is a particular worry with the argument put forward by Constantin and Grundmann applied to credences: They frequently appeal to both flat-out beliefs and credences when defining their central notions like experts, authorities and undercutting defeat. For example, following Goldman, experts are defined as possessing methods that reliably lead to true beliefs and adequate credences. In the case of true beliefs, this is easily understood. But what does that mean for a credence? One might think that adequate credence means something like the unique rational credence given a fixed body of evidence in the sense that the Uniqueness Thesis claims it exists.\footnote{cf. \textcite{Feldman2007-FELRRD}.} But then, one would have to presuppose Uniqueness just to define what an expert is. That seems excessive. Instead, and charitably, one could suppose a notion where an expert's testimony tested for reliability. This is, in theory, as familiar a notion as for flat-out belief, and the approach that's adopted in the present paper. The details and ramifications are still very much unclear, and to clarify these notions will be one of the central motivations for this paper.  
 
 \subsection{Evaluation}
 
-What kind of argument can the present paper deliver? In brief, it strives to be a normative one, of course, since the question which rational strategy to employ is a strictly normative one. If there is a principle of undercutting defeat which can be derived from the standard probability axioms plus conditionalization, the normative justification is already given, if not, something of a plausibility argument has to give.
-{\color{red} Redo this once done}
+What kind of argument can the present paper deliver? In brief, it strives to be a normative one, of course, since the question which rational strategy to employ is a strictly normative one. Epistemic normativity for degrees of belief is of course hotly debated, but most agree that there is some sense to the notion. Usually, normativity is derived from the standard probability axioms plus conditionalization, which are taken as normative themselves. Or even these are justified through practical arguments like Dutch Books or purely epistemic arguments that derive their normative force from attributing epistemic value to doxastic attitudes which are measurably close to the truth. By showing that an epistemic practice generates accurate credences, these practices are endowed with normative force. What exactly the accuracy of a credence amounts to is defined decisively non-homogeneous, but usually credences are distinguished as more accurate that differ less in their probability assignment from what is taken to be the true value of a proposition. 
+
+In this paper, both strategies are used, in that I take undercutting defeat to already be a justified principle (which of course can be contested, but isn't in this paper) and also evaluate the accuracy of credences generated by the strategies proposed. 
 
 \section{Bayesian Updating on Testimony}
 
-\subsection{Goldman's Account}
+\textcite{Olsson2013} develop a very intriguing account of how testimony can be modeled in the Bayesian framework. They go on and actually implement the account in a computer simulation to address various questions regarding informational movement in a social network. Here, the focus is on a single or very few transactions between agents, and in contrast to their account time steps are not critically involved in the considerations, since there usually only is a before and after the update. Exceptions are noted as such. Note, too, that the indices relating the probability assignment to an agent are omitted, since usually only a single agent's credences are looked at.   
 
-Goldman's aim\textcite[103--130]{Goldman1999-GOLKIA} is to show that Bayesian updating the way he models it promotes epistemic value, which he sees in the accuracy or verisimilitude of a credence. 
+The presented account models the reliability of agents as well as agent's opinions about agent's reliability. This yields a much richer framework than simple Bayesian updating, and consequently a thorough description is in order.
 
-\subsection{Bovens and Hartmann's Account}
+To keep things manageable, there is a single \i{true} target proposition $p$ which the agents have a credence $\Pr_\alpha(p)$ towards. Agents can receive information from a \i{source}. These can be (i) other agents in the social network or (ii) their own inquiry. The objective chance that an agents inquires and gets it right is called that agent's \i{aptitude}: $P(S_{\iota}p \given S_{\iota} \land p)$, where $S_{\iota}$ is the proposition that the agent inquires for evidence, regardless of the results, and $S_{\iota} p$ the chance that she inquires and her inquiry yields $p$ as a result. 
 
-
-\subsection{Olsson and Vallinder's Account}
-
-A step up in detail and the best fit for the present purposes is the account proposed by \textcite{Olsson2013} and \textcite{Angere2010}.
-
-\subsubsection{Starting Parameters}
-
-To keep things manageable, there is a single \i{true} target proposition $p$ which the agents have a credence $C^t_\alpha(p)$ towards. Each time step, agents can receive information from a \i{source}. These can be (i) other agents in the social network or (ii) their own inquiry. The objective chance that an agents inquires and gets it right is called that agent $\alpha$'s \i{aptitude}: $P(S_{\iota \alpha}p \given S_{\iota \alpha} \land p)$, where $S_{\iota \alpha}$ is the chance that agent $\alpha$ inquires for evidence, regardless of the results, and $S_{\iota \alpha} p$ the chance that she inquires and her inquiry yields $p$ as a result. The chance that she inquires at all, $P(S_{\iota \alpha})$, is called her \i{activity}. For the sake of simplicity, these chances are modeled as time invariant.
-
-Sources can be more or less reliable. The reliability is assumed to be symmetric.
+Sources can be more or less reliable. The reliability is assumed to be symmetric. Here, $\sigma$ is a placeholder for a source to plug in. 
 \[ 
-R_{\sigma \alpha} =_{df.} P(\Ssa p \given \Ssa \land p) = P(\Ssa \neg p \given \Ssa \land \neg p)
+R_{\sigma} =_{df.} P(\Ss p \given \Ss \land p) = P(\Ss \neg p \given \Ss \land \neg p)
 \]
-This is, of course, just the agent's aptitude. Note that the reliability of an agent is modeled continuously, in contrast to the binary full reliability/randomiser approach employed in \textcite[Chp. 3]{Bovens2003}, such that with a reliability value of less than $.5$ an agents inquiry would actually be negatively correlated with the truth.
+This is, of course, just the agent's aptitude. Note that the reliability of an agent is modeled continuously, in contrast to the binary full reliability/randomiser approach employed in \textcite[Chp. 3]{Bovens2003}, such that with a reliability value of less than $0.5$ an agents inquiry would actually be negatively correlated with the truth.
 
-Each agent trusts each source to a certain extent. This is expressed in the agent's credence in the reliability of the source:
+Agent trust sources to a certain extent. This is expressed in the agent's credence in the reliability of the source:
 \[ 
-    C^t_{\alpha}(a \leqslant R_{\sa} \leqslant b) = \int_a^b \tau^t_{\sa}(\rho) d\rho
+    \Pr(a \leqslant R_{\sigma} \leqslant b) = \int_a^b \tau_{\sigma}(\rho) d\rho
 \]
-where $\tau^t_{\sa}: [0,1] \rightarrow \mathbb{R}^+$ is a probability density function such that 
+where $\tau_{\sigma}: [0,1] \rightarrow \mathbb{R}^+$ is a probability density function such that 
 \[
-    C^t_{\alpha}(0 \leqslant R_{\sa} \leqslant 1) =  \int_0^1 \tau^t_{\sa} (\rho) d\rho = 1
-\]which is a very plausible requirement on a rational credence function.\footnote{In fact, not obeying this would violate the probability axioms. For some reason, \textcite{Angere2010} as well as \textcite{Olsson2013} define the trust function as $\tau^t_{\sa}: [0,1] \rightarrow [0,1]$, such that it doesn't integrate to 1 (in all but the trivial case). I assume they are doing some hidden normalising that I am to near-sighted to see.}
+    \Pr(0 \leqslant R_{\sigma} \leqslant 1) =  \int_0^1 \tau_{\sigma} (\rho) d\rho = 1
+\]which is a very plausible requirement on a rational credence function.\footnote{In fact, not obeying this would violate the probability axioms. For some reason, \textcite{Angere2010} as well as \textcite{Olsson2013} define the trust function as $\tau_{\sigma}: [0,1] \rightarrow [0,1]$, such that it doesn't integrate to 1 (in all but the trivial case). I assume they are doing some hidden normalising that I am to near-sighted to see.}
 
 \begin{description}
-    \item[Example.] An agent $\alpha$ with a healthy trust in her own inquisitive abilities and who is not easily swayed in this trust may have a trust function $\tau^t_{\iota\alpha}$ described by a beta distribution
+    \item[Example.] An agent with a healthy trust in her own inquisitive abilities and who is not easily swayed in this trust may have a trust function $\tau_{\iota}$ described by a beta distribution
 \[
-    \tau^t_{\iota\alpha} (\rho) = \frac{1}{B(a,b)} \rho^{a - 1} {(1 - \rho)}^{b-1}
+    \tau_{\iota} (\rho) = \frac{1}{B(a,b)} \rho^{a - 1} {(1 - \rho)}^{b-1}
 \]
 with normalising beta function $B(a,b)$ and parameters $a, b$ chosen such that $\tau^t_{\iota\alpha}$ is densest around whatever a `healthy trust' amounts to, let's say 0.85. Interestingly, the shape of the curve correlates with how resilient the function behaves upon updating. More on that below.
 \end{description}
-Apart from inquiries, a source can also be another agent, through testimony. An agent $\alpha$ therefore trusts herself at time $t$ with $\tau^t_{\iota\alpha}$ and another agent $\beta$ with $\tau^t_{\beta\alpha}$.
+Apart from inquiries, a source can also be another agent, through testimony. An agent $\alpha$ therefore trusts herself at time $t$ with $\tau_{\iota}$ and another agent $\beta$ with $\tau_{\beta}$.
 
 The exchange of information and the evolution of the trust functions and the credences in $p$ are the most important going-ons in this model, which I'll summarize next.
 
-\subsubsection{Inquiry and Communication} 
+Testimony is, of course, a matter of language, and is most plausibly modeled as a binary judgment, that is, either $p$ or $\neg p$. While there are certainly interesting cases where the testimony involves credences or levels of confidences, e.g.\ a weather forecaster stating her belief in the chance of rain tomorrow, this does in my view not yield a general notion. The simple testimony is much more common. 
 
-Time progress is modeled in discrete steps. At each time step, each agent updates her credence and her trust function. The new information which motivates these changes are messages from the sources, which the agent receives if
-\begin{enumerate}[label = (\roman*)]
-    \item the agent inquires herself with probability $P(S_{\iota\alpha})$. The result of the inquiry is determined by the agent's aptitude. Or,
-    \item another agent $\beta$ is connected to agent $\alpha$ through the social network and decides to share her opinion. This is modeled, in slight deviation from the Olsson-Vallinder model, by the following conditions: 
-        \begin{enumerate}[label = (\alph*)]
-            \item Agent $\beta$ is sufficiently confident in $p$ resp. $\neg p$, determined by some fairly high threshold value for her credence, and
-            \item agent $\beta$ received herself new information in the same time step. In the current implementation, this is only fulfilled by own inquiry.  
-        \end{enumerate}
-\end{enumerate}
+Updating the credences is based on new messages the agent receives from sources: $\Sm$, where $m^\sigma$ is the message that the agent receives received from source $\sigma$ (which can represent her own inquiry or another agent's testimony), and is either $p$ or $\neg p$. An agents can receive multiple messages at once.
 
-Testimony is, of course, a matter of language, and is most plausibly modeled as a binary judgment, that is, either $p$ or $\neg p$. While there are certainly interesting cases where the testimony involves credences or levels of confidences, e.g. \ a weather forecaster stating her belief in the chance of rain tomorrow, this does in my view not apply to  
-
-\subsubsection{General Updating}
-
-Each time step, the agents update their credences and trust functions. Updating the credences is based on new messages the agent received this time step: $\Stsa m^t_{\sa}$, where $m^t_{\sa}$ is the message that $\alpha$ received from $\sigma$ (which can represent $\alpha$'s own inquiry or another agent's testimony) at $t$, and is either $p$ or $\neg p$. An agents can receive multiple messages per time step, but only one message per source, so we have to account for that as well. 
-
-In the central and most important deviation from the Olsson Vallinder model, I distinguish between the \i{Preemption} strategy and the \i{Total Evidence} strategy of dealing with expert testimony. In normal circumstances, both strategies involve the same standard bayesian updating rules, which I give in detail below. In the face of expert testimony they may differ, however, and I describe the requirements for differences as well as the differences themselves subsequently. 
-
-The updating rule is given by conditionalization:
+The central updating rule is given by conditionalization:
 \[
-    C^{t+1}_\alpha (p) = C^t_\alpha (p \given \bigwedge_{\sigma \in \Sigma^t_\alpha} \Stsa m^t_{\sa}),
+    \Pr(p) = \Pr (p \given \bigwedge_{\sigma \in \Sigma} \Sm),
 \]
 
-where $\Sigma^t_\alpha$ is the set of sources that send a message to $\alpha$ at $t$.
+where $\Sigma$ is the set of sources that send a message to the agent.
 
-With the assumption that sources are independent given the target proposition, the update calculates to
+With the assumption that sources are \i{independent} given the target proposition (this plays a major role later on), the update calculates to
 \begin{equation}
     \label{eq:upd}
-    C^t_\a (p \given \bigwedge \Sm) = \\
-     \frac{C^t_\a (p) \prod C^t_\a (\Sm \given p) }
-    {C^t_\a (p) \prod C^t_\a (\Sm \given p) +  C^t_\a (\neg p) \prod C^t_\a (\Sm \given \neg p) }.
+    \Pr (p \given \bigwedge \Sm) = \
+     \frac{\Pr (p) \prod \Pr (\Sm \given p) }
+    {\Pr(p) \prod \Pr (\Sm \given p) +  \Pr (\neg p) \prod \Pr (\Sm \given \neg p) }.
 \end{equation}
 
 Here, again, the product and big conjunct range over all sources with a message for the agent, the subscript omitted for legibility.   
 
 The expressions about the reliability are given by:
 \begin{align*}
-    C^t_\a (\Stsa p \given p) &= C^t_\a (\Stsa) \langle \tau^t_{\sa} \rangle \\
-    C^t_\a (\Stsa \neg p \given p) &= C^t_\a (\Stsa) \langle \bar{\tau}^t_{\sa} \rangle \\
-    C^t_\a (\Stsa p \given \neg p) &= C^t_\a (\Stsa) \langle \bar{\tau}^t_{\sa} \rangle \\
-    C^t_\a (\Stsa \neg p \given \neg p) &= C^t_\a (\Stsa) \langle \tau^t_{\sa} \rangle,
+    \Pr (\Ss p \given p)            &= \Pr (\Ss) \langle \tau^t_{\sa} \rangle \\
+    \Pr (\Ss \neg p \given p)       &= \Pr (\Ss) \langle \bar{\tau}^t_{\sa} \rangle \\
+    \Pr (\Ss p \given \neg p)       &= \Pr (\Ss) \langle \bar{\tau}^t_{\sa} \rangle \\
+    \Pr (\Ss \neg p \given \neg p)  &= \Pr (\Ss) \langle \tau^t_{\sa} \rangle,
 \end{align*}
 
-where $\langle \tau^t_{\sa} \rangle $ is the expected value of trust function $ \tau^t_{\sa} $ and ${\langle \bar{\tau}^t_{\sa} \rangle =_{df.} 1 - \langle \tau^t_{\sa} \rangle}$.\footnote{Detailed and very helpful derivations of these equations can be found in \textcite{Angere2010}, although in places I could not agree with the results. I implemented the updating mechanism as presented in this paper. There is not much room to detail the finer points here, only this much: Angere's final result on page 22 for the credence update intuitively can't be right, since the expression as stated there does not depend on the actual content of the message, that is, $p$ or $\neg p$, anymore, and instead just updates regardless, rendering the network communication ineffective.} 
+where $\langle \tau_\sigma \rangle $ is the expected value of trust function $ \tau_\sigma $ and ${\langle \bar{\tau_\sigma} \rangle =_{df.} 1 - \langle \tau_\sigma \rangle}$.\footnote{Detailed and very helpful derivations of these equations can be found in \textcite{Angere2010}, although in places I could not agree with the results. I implemented the updating mechanism as presented in this paper. There is not much room to detail the finer points here, only this much: Angere's final result on page 22 for the credence update intuitively can't be right, since the expression as stated there does not depend on the actual content of the message, that is, $p$ or $\neg p$, anymore, and instead just updates regardless, rendering the network communication ineffective.} 
+
+Where this account really shines is the possibility to update the trust function based on the evidence. Although not strictly needed for the present purposes, I demonstrate the updating procedure for the case that evidence regarding $p$ is received. This example alone opens up very interesting structural relations between the credences and the trust functions involved.
 
 Upon receiving a message, the agent updates her trust function for that source depending on how well the message coheres with her own credence. The updated trust function can be calculated to
 \[
-    \tau^{t+1}_\sa = \tau^t_\sa (\rho) \frac{\rho \: C^t_\a (p) + (1 - \rho) C^t_\a (\neg p)}
-    {\langle \tau^t_\sa \rangle C^t_\a(p) + \langle \bar{\tau}^t_\sa \rangle C^t_\a(\neg p)}
+    \tau_\sigma = \tau_\sigma (\rho) \frac{\rho \: \Pr(p) + (1 - \rho) \Pr(\neg p)}
+    {\langle \tau_\sigma \rangle \Pr(p) + \langle \bar{\tau_\sigma} \rangle \Pr(\neg p)}
 \]
-if $m^t_{\sa} = p$, and 
+if $m_\sigma = p$, and 
 \[
-    \tau^{t+1}_\sa = \tau^t_\sa (\rho) \frac{\rho \: C^t_\a (\neg p) + (1 - \rho) C^t_\a (p)}
-    {\langle \tau^t_\sa \rangle C^t_\a(\neg p) + \langle \bar{\tau}^t_\sa \rangle C^t_\a(p)}
-\]
-if $m^t_{\sa} = \neg p$. This entails that the trust an agents brings towards a source only changes with regard to the agents credence in p and the source's message whether p. This is one of the major shortcomings of the model, in my view, especially for the current purposes, as at no stage something like higher order evidence about the reliability of the source comes into play. 
-
-\subsubsection{Updating With Preemption}
-
-In certain cases, an agent who pursues the preemptive strategy differs in her updating rule from what is described above, namely when she recognizes another agent as an epistemic authority. I modeled the requirements in \textcite[p.9]{Constantin2017} for the recognition of an epistemic authority in the following way. 
-\begin{description} 
-    \item[Epistemic Authority] An agent $\alpha$ recognizes another agent $\beta$ as an epistemic authority regarding proposition $p$ at time $t$ if and only if  
-    \begin{enumerate}[label= (\roman*)]
-        \item $\langle \tau^t_{\beta\alpha} \rangle \geqslant T_A$, where $T_A$ is a reasonably high threshold of trust, and
-        \item $\langle \tau^t_{\beta\alpha} \rangle - \langle \tau^t_{\iota\alpha} \rangle \geqslant \Delta_A$, where $\Delta_A$ denotes a significant difference in trust level.
-    \end{enumerate}
-
-
-\end{description}
-    In plain English: Consider a layperson and an expert. For the layperson to regard the expert as an epistemic authority, she has to (i) regard the expert with a high amount of trust. The threshold is high, somewhere above $.8$. Condition (ii) requires that the expert enjoys a significantly higher trust from the layperson than the layperson trusts her own abilities to evaluate evidence. This might also be modeled as a ratio, but in this case is not crucial.
-
-As soon as an agent recognizes another as an epistemic authority, her updating pattern changes significantly. First, she stops to gather evidence herself completely. Second, instead of updating according to all her evidence and sources, she ignores all other messages and instead adopts the authority's opinion.
-
-Constantin and Grundmann do not specify a precise credence as a proper response in this case, as they assume that the layperson knows of the expert's credence. In this model, however, communication happens on a binary basis.
- 
-I argue that the right credence for the layperson to adopt in this case is just $\langle \tau^t_{\beta\alpha} \rangle$ (if the message is $p$, or $1 - \langle \tau^t_{\beta\alpha} \rangle$ if $\neg p$, the case is an exact analogous). While it is intuitively appealing, it's also a consequence from some rather innocuous assumptions. The argument goes as follows. 
-
-\textcite[p.12]{Constantin2017} define the effect of preemption as making any evidence for or against the target proposition rationally unusable for the agent. That is, whatever first-order evidence she gathered beforehand, as soon as she recognizes an epistemic authority as such regarding that proposition, two things happen: 
-
-First, she is rationally required to disregard all her evidence. It is quite uncontroversial to regard a credence around $.5$ to be rational in the case of total absence of evidence (extreme subjective Bayesians excluded). But being indifferent is certainly not a bad thing in this case. Formally, this can be described as a screening-off. Let $\beta$ be an authority for $\alpha$. Then $\a$'s evidence is preempted by $S_{\beta\a}$ iff for all (relevant) evidence $E$, 
-\[ 
-    p \CI_{C_\a} E \given S_{\beta\a}, 
-\]
-that is, relative to $\a$'s credence function, $p$ is independent of $E$ given $S_{\beta\a}$. That is, the rational requirement the authority's testimony induces on the preemption strategist's credences.
-
-Second, the only available evidence is the authority's testimony. The agent classically conditions on that. Given the above, this is calculated quickly. Equation~\ref{eq:upd} reduces in this case to 
-
-\[
-    C^{t+1}_\a (p) = \frac{C^t_\a(p) \langle \tau^t_{\beta\a} \rangle}
-    {C^t_\a(p) \langle \tau^t_{\beta\a} \rangle + C^t_\a(\neg p) \langle \bar{\tau}^t_{\beta\a} \rangle}
-\]
-and because I require as mentioned $C^t_\a(p) = C^t_\a( \neg p)$, simple algebra gives 
-\[
-    C^{t+1}_\a (p) = \langle \tau^t_{\beta\a} \rangle.
+    \tau_\sigma = \tau_\sigma (\rho) \frac{\rho \: \Pr(\neg p) + (1 - \rho) \Pr(p)}
+    {\langle \bar{\tau_\sigma} \rangle \Pr(\neg p) + \langle \tau_\sigma \rangle \Pr(\neg p)}
 \]
 
-The trust functions update in the usual way. They are \i{not} affected by the preemption. This is, in my opinion, actually a strong suit of the model. \textcite[p. XX]{Constantin2017} describe a range of cases in which the purported authority make an  \i{outrageous} claim which is so obviously wrong that the agent should lessen her trust in the authority and do not regard her as such anymore. This is reflected in the model: If the agents beliefs something to an extremely high degree, and a purported authority says otherwise, it is possible to lower the trust in the authority and thereby make her lose her status as an authority for the agent. 
+if $m_\sigma = \neg p$. 
 
+So far for the general Bayesian strategy of belief updating in the Olsson and Vallinder model. In the next section, the whole apparatus is applied to the case at hand, authority testimony. 
 
 \section{The Preemption View for Degrees of Belief}
 
@@ -363,7 +316,6 @@ To find an answer, we need to determine what $E$ actually is in our model and ho
 
 Since this is not easily obtainable, the way proposed here might seem like a sleight of hand, but may be reconciled with some argument. Recall that the agent has a trust function for her own inquiries in matters of $p$, or from that domain, as well. It may not be completely off to interpret the agent's current credence in that model as a result of conditioning on her own inquiry. That is, here rational credence after her own evaluation equals her own expected trust in this matter. This may seem like a variant of Lewis' Principal Principle, in a way, but is this this model's answer to what a reflective person should assign her credences. You just treat yourself as another source for information.\footnote{This is, of course, somewhat contentious and raises a number of concerns and questions. A generally interesting issue, however, for the present purposes I take it as plausible enough.}   
 
-
 If we additionally adopt the principle of indifference again, we have
 
 \begin{table}[ht]
@@ -390,13 +342,22 @@ What, then, potentially alleviates the troublesome news? I think the answer lies
 
 How can this idea be made to fit in the Olsson Vallinder model? First, we have to again use the sleight of hand from above and regard the prior credence as the result of a conditionalisation of an indifferent credence on one's own inquiry. Additionally, there is a tacit assumption explicit in \textcite{Angere2010} that is briefly mentioned on page~\pageref{eq:upd}: The source messages are assumed to be probabilistically independent. 
 \[\Pr \left( \bigwedge S_{\sigma}m_\sigma \given m_\sigma\right) = \prod \Pr\left( S_{\sigma}m_\sigma \given m_\sigma\right)\] 
-But this, as just laid out, does not hold here. Consider the case of two conflicting authority testimonies $S_\beta$ and $S_\gamma$. The testimony of the authorities lower the credence in the reliability of one's own reasoning. That is, $\Pr(S_\iota p \given p) \geqslant \Pr(S_\iota p \given p \land S_\beta m_\beta \land S_\gamma m_\gamma)$. This simple condition makes sure that the updated credence is always less or equal than if we would assume source independence, as can easily be checked by plugging it into Equation~\ref{eq:upd} on page \pageref{eq:upd}. But how is the new likelihood calculated? Frankly, I haven't been able to figure it out yet do to time constraints, so this paper is very much still work in progress. I would love some input and discussion on it, though!
+But this, as just laid out, does not hold here. Consider the case of two conflicting authority testimonies $S_\beta$ and $S_\gamma$. The testimony of the authorities lower the credence in the reliability of one's own reasoning. That is, $\Pr(S_\iota p \given p) \geqslant \Pr(S_\iota p \given p \land S_\beta m_\beta \land S_\gamma m_\gamma)$. This simple condition makes sure that the updated credence is always less or equal than if we would assume source independence, as can easily be checked by plugging it into Equation~\ref{eq:upd} on page~\pageref{eq:upd}. But how is the new likelihood calculated? Frankly, I haven't been able to figure it out yet do to time constraints, so this paper is very much still work in progress. I would love some input and discussion on it, though!
 
 Apart from the missing derivation, this approach seems to be promising. It does justice to the notion of an undercutting defeater while still fit into a Bayesian framework. 
 
 \section{Conclusion}
 
-Still open questions: Why, really, should an authority who mostly agrees with you constitute an undercutting defeat for your belief? In the case of peer disagreement, it's different!  
+
+What, then, can be said to be the result of this paper? First, a general representation of the epistemic phenomenon of undercutting defeat has been presented. This notion has been used to argue for a particular strategy of belief updating when faced with expert testimony. While the more fleshed out proposals did have grave objections, the most promising proposal of giving up source independence still needs work. Nevertheless, I hope to have convincingly laid out Constantin and Grundmann's argument that an authority's testimony constitutes an undercutting defeater for your evidence. By tying together the Olsson and Vallinder model which includes trust as a central notion and the Preemption View, I hope to have shown that the proposed interpretation of undercutting defeat has some internal plausibility and is actually sensibly applicable. Of course, the scope of this paper may be a tad grand, and the  proposed solutions are only tiny steps.
+
+The model, as it stands, may not be fine grained enough, though, as Constantin and Grundmann do make finer points towards the end of the paper by differentiating between different types of trusts in the same person in the same domain, but then it was never the goal to give a complete picture. 
+
+The present argument could be refined to show that on the promising proposal, updating like described leads to a general increase in accuracy. This would help support the view, but has to wait for another paper.
+
+Of course, the proposal as it stands is open to objections. For example: Is it really that clear that an authority's testimony undercuts your evidence, even if it generally agrees with your opinion? Shouldn't it instead \i{boost} your credence, if ever so slightly? This is, I think, a valid point and not so easily dispelled. 
+If the mere information that an authority has a particular opinion already undercuts my evidence, doesn't already the belief that an authority has any opinion at all? And can't I reasonably expect authorities having opinions about many things, rendering all my evidence moot? There are ways to address this slippery slope, but they, too, are out of the scope of this paper.
+
 \printbibliography{}
 \end{document}
 
