@@ -11,6 +11,7 @@
 \usepackage{fontspec}
 \usepackage{titlesec}
 \usepackage{color}
+\usepackage{booktabs}
 
 \newcommand{\mh}[1]{\noindent\emph{#1}}
 \newcommand{\Ssa}{S_{\sigma\alpha}}
@@ -99,7 +100,7 @@ Beyond unclear what it means to have the correct credence, see definitions and l
 
 \subsection{Evaluation}
 
-What kind of argument can the present paper deliver? In brief, it strives to be a normative one, of course, since the question which rational strategy to employ is a strictly normative one. If there is a principle of undercutting defeat which can be derived from the standard probability axioms plus conditionalisation, the normative justification is already given, if not, something of a plausibility argument has to give.
+What kind of argument can the present paper deliver? In brief, it strives to be a normative one, of course, since the question which rational strategy to employ is a strictly normative one. If there is a principle of undercutting defeat which can be derived from the standard probability axioms plus conditionalization, the normative justification is already given, if not, something of a plausibility argument has to give.
 {\color{red} Redo this once done}
 
 \section{Bayesian Updating on Testimony}
@@ -165,7 +166,7 @@ Each time step, the agents update their credences and trust functions. Updating 
 
 In the central and most important deviation from the Olsson Vallinder model, I distinguish between the \i{Preemption} strategy and the \i{Total Evidence} strategy of dealing with expert testimony. In normal circumstances, both strategies involve the same standard bayesian updating rules, which I give in detail below. In the face of expert testimony they may differ, however, and I describe the requirements for differences as well as the differences themselves subsequently. 
 
-The updating rule is given by conditionalisation:
+The updating rule is given by conditionalization:
 \[
     C^{t+1}_\alpha (p) = C^t_\alpha (p \given \bigwedge_{\sigma \in \Sigma^t_\alpha} \Stsa m^t_{\sa}),
 \]
@@ -297,10 +298,10 @@ In other words, the rebutting defeater is just any old evidence for the negation
 \end{description}
 
 How does the rebutting defeater also undercut? Suppressing the background knowledge $K$ for the moment, we have directly 
-\[{ \Pr(H \given E) - \Pr(H)  >  \Pr(H \given E \land D) - \Pr(H\given D)  \geqslant 0.}\]
-This result should make intuitive sense: A rebutting defeater, meaning a reason against the hypothesis, reduces the evidential import of the evidence if added to one's total evidence. 
+\[{ \Pr(H \given E) - \Pr(H)  >  \Pr(H \given E \land D) - \Pr(H\given D) \geqslant 0 }\]
+This result should make intuitive sense: A rebutting defeater, meaning a reason against the hypothesis, reduces the evidential import of the evidence if added to one's total evidence.     
 
-Some things have to be clarified with regards to the probability function in question. It is not really clear from what was said so far how we can recover the probabilities where we did not condition on the evidence already, because, let's assume, the agent reached her current probability function through classic conditionalisation. Then her subjective probabilities of course already include all the available evidence acquired at this point. But to talk about defeaters like above, her probability assignment \i{without} conditioning on the evidence is highly relevant. The agent needs to somehow forget what she learned with certainty already. Since this is not intended in the Bayesian paradigm, concept like hypothetical priors is introduced. Hypothetical priors are such that they represent an agent's credences before she learned anything empirical.\footnote{cf. \textcite[Ch. 4]{Levi1980}, \textcite[110]{Titelbaum2017}} Then, assuming she updated her beliefs always and only in accord with conditionalisation, an agent's credences at a time $t$ are represented by a probability function that results from conditioning her hypothetical priors on her total evidence at that time.
+Some things have to be clarified with regards to the probability function in question. It is not really clear from what was said so far how we can recover the probabilities where we did not condition on the evidence already, because, let's assume, the agent reached her current probability function through classic conditionalization. Then her subjective probabilities of course already include all the available evidence acquired at this point. But to talk about defeaters like above, her probability assignment \i{without} conditioning on the evidence is highly relevant. The agent needs to somehow forget what she learned with certainty already. Since this is not intended in the Bayesian paradigm, concept like hypothetical priors is introduced. Hypothetical priors are such that they represent an agent's credences before she learned anything empirical.\footnote{cf. \textcite[Ch. 4]{Levi1980}, \textcite[110]{Titelbaum2017}} Then, assuming she updated her beliefs always and only in accord with conditionalization, an agent's credences at a time $t$ are represented by a probability function that results from conditioning her hypothetical priors on her total evidence at that time.
 
 That is, let $E_t$ be the agent's total evidence at time $t$. Then her probability function at $t$ results on conditioning her hypothetical priors on the evidence up to this point such that $\Pr_t(\cdot) = \Pr_H(\cdot \given E_t)$. Now the connection to undercutting defeat seems to be this: Suppose the agent learns of the potential defeater at time $t$. To determine whether equation~\ref{eq:undercut} is satisfied, the probability function to represent her credences has to be chosen. The correct function $\Pr_c$\footnote{The $c$ is for `correct'!} seems to be determined by her hypothetical priors conditioned on her available evidence at that time \i{without} all evidence to be defeated and the defeater. Formally: $ \Pr_c(\cdot) = \Pr_H (\cdot \given E_t \setminus (E \land D))$. Then this function $\Pr_c$ can be tested against equation~\ref{eq:undercut}.
 
@@ -329,34 +330,73 @@ In plain English: Consider a layperson and an expert. For the layperson to regar
 
 The advantage of the Olsson Vallinder model becomes self-evident here: The trust level that decides over authority acceptance is endogenous to the model. Somewhat similar to the Lockean Thesis concerning the relation of full belief and partial belief, this approach connects recognizing an authority to a level of trust in that person by a threshold measure. If that threshold is crossed, and the trust level is higher than the agent's own, the authority is recognized as such. 
 
-How does that help with the updating rule? We now have an exact criterion, when an agents recognizes an authority. Now let's add two further assumptions. First, the  authorities testimony generates a \i{full} undercutting defeater for all of the agent's relevant evidence. Second, where there is no evidence, one should be indifferent --- the principle of indifference.\footnote{Which is not to bold an assumption, I presume. Also, cf. \textcite[Ch. 5.3]{Titelbaum2017} for a helpful discussion and its relation to the maximum entropy principle.}   
+How does that help with the updating rule? We now have an exact criterion, when an agents recognizes an authority. Now let's add two further assumptions. First, the  authorities testimony generates a \i{full} undercutting defeater for all of the agent's relevant evidence. Second, where there is no evidence, one should be indifferent --- the principle of indifference.\footnote{Which is not too bold an assumption, I presume. Also, cf. \textcite[Ch. 5.3]{Titelbaum2017} for a helpful discussion and its relation to the maximum entropy principle.}   
 
-The full undercutting defeater of the authority testimony has the effect that it screens of all relevant first-order evidence such that $\Pr(p \given E \land \Sm) = \Pr(p \given \Sm)$. For simplification the indications for hypothetical priors are omitted.
+The full undercutting defeater of the authority testimony has the effect that it screens of all relevant first-order evidence such that $\Pr(p \given E \land \Sm) = \Pr(p \given \Sm)$. For simplification the indices for hypothetical priors are omitted.
+
+Now, if this is the case, the agent's credence in $p$ should be $\Pr(p) = \Pr(\neg p) = 0.5$. As described above, the new credence then calculates with 
 
 \[
-    C^{t+1}_\a (p) = \frac{C^t_\a(p) \langle \tau^t_{\beta\a} \rangle}
-    {C^t_\a(p) \langle \tau^t_{\beta\a} \rangle + C^t_\a(\neg p) \langle \bar{\tau}^t_{\beta\a} \rangle}
+    \Pr(p \given \Sm) = \frac{\Pr(p) \langle \tau_{\beta\a} \rangle}
+    {\Pr_\a(p) \langle \tau_{\beta\a} \rangle + \Pr(\neg p) \langle \bar{\tau}_{\beta\a} \rangle},
 \]
-and because I require as mentioned $C^t_\a(p) = C^t_\a( \neg p)$, simple algebra gives 
+then simple algebra gives 
 \[
-    C^{t+1}_\a (p) = \langle \tau^t_{\beta\a} \rangle.
+    \Pr(p \given \Sm ) = \langle \tau_{\beta\a} \rangle.
 \]
 
+Which seems like a rather promising result, does it not? Intuitively, it makes sense to adopt the credence corresponding to the trust level of the authority. Since before, there is a hunch of arbitrariness associated with  choosing a threshold above which to recognize an expert as an authority, this seems to unfairly favor trust levels close above the threshold over higher trust levels. Once you're above the threshold, it is a full undercutting defeater, and additional trust does not factor in. In this account, however, the trust level directly factors into the credence again, giving proper weight to the intuitive import of trust. The threshold still is kind of arbitrary and would have to be reasoned for independently, just as the notion that over the threshold, the testimony constitutes a full defeater, full stop.
 
-
+Is this the solution, then? Perhaps not quite: there is some evidence speaking against it. In another paper, I tested this method in an agent-based computer simulation, calculating the outcomes of comparable agents employing this strategy vs.\ the more standard Bayesian strategy proposed by Olsson and Vallinder, while varying the starting parameters. The outcomes were evaluated by their accuracy after ten time steps of activity in the social network, presupposing a veritist notion of epistemic normativity, as Olsson and Vallinder do in their experiments, too. Since veritism isn't too uncommon in formal epistemology, I take it that the approach has at least some normative import. The results were quite clear: Given the experimental setup, the standard Bayesian strategy \i{clearly} trumps the preemptive strategy on accuracy. However, and that's with a capital \i{H}, there are some caveats to consider. Since the credence is based on expected trust, and expected trust is based on the trust function, and the updating of the trust function is heavily dependent on the shape of the trust function, the change in credence bigly depends on the initial shape of the trust function. The difference in accuracy of both strategy's credences can plausibly be explained by the lackluster speed with which the expected trust level changes. Also, the trust levels of the agent's in their own abilities where rather on the low end. A different, less pronounced shape of the initial trust function and change in self-trust could render this result moot, or at least not as grave. In brief, by varying even more parameters of the experiment the results could change significantly. So while the experiment provides some clues about the feasibility of the strategies, the issue is far from settled. 
 
 \subsubsection{The It's-Just-Bayesian Method}
 
+To tie on the remarkable accuracy of the standard conditionalizing, what if there is no special treatment of authority needed in the Bayesian framework, after all? Maybe there is such a thing as free lunch and the orthodox updating already suffices for the present purposes. Well, let's find out. 
+
+The question is whether the authority's testimony constitutes an undercutting defeater like specified above. We test the updating method against Equation~\ref{eq:undercut}, reformulated here like so:
+
+\[
+    \Pr(p \given E) - \Pr(p) > \Pr(p \given E \land \Sm) - \Pr(p \given \Sm) \geqslant 0
+\]
+
+To find an answer, we need to determine what $E$ actually is in our model and how to recover the hypothetical priors for this probability function, since all we have is the \i{current} probability function after the agent learned all the evidence and before she learned of the defeater. 
+
+Since this is not easily obtainable, the way proposed here might seem like a sleight of hand, but may be reconciled with some argument. Recall that the agent has a trust function for her own inquiries in matters of $p$, or from that domain, as well. It may not be completely off to interpret the agent's current credence in that model as a result of conditioning on her own inquiry. That is, here rational credence after her own evaluation equals her own expected trust in this matter. {\color{red} This might be flesjhed out a bit, maybe with a formula, too}
+
+If we additionally adopt the principle of indifference again, such that  we have
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}cccc@{}}
+\toprule
+$\Pr(p \given E)$ & $\Pr(p)$ & $\Pr(p \given E \land \Sm)$ & $\Pr(p \given \Sm)$ \\ \midrule
+$\Pr(p \given S_{\iota}p )$ & 0.5 & $\Pr(p \given S_\iota p \land S_\beta p)$ & $\Pr(p \given S_\beta p)$
+\end{tabular}
+\end{table}
+
+That $\beta$ is an authority for the agent requires $\langle \tau_\beta \rangle > \langle \tau_\iota \rangle$.
+
+In the case of $m_\beta = p$,  
+
+In the case of $m_\beta = \neg p$, 
+
+Such that it seems like the standard Bayesian updating already respects our formal demands of preemption. The evidence is not completely preempted, that much is true, but it seems like it doesn't really have any real impact on the result any more.  
+
+But, there is a case with an intuitive judgment which I consider a knock-down argument. Suppose not one, but two competing authorities. So far this account hasn't talked about two authorities, but it's very straightforward to integrate two authorities in the orthodox Bayesian way. But first, check your intuitions. Two experts you regard as authorities of a field with about equal trust contradict each other. One says $p$, the other $\neg p$. Isn't the proper response here to be very cautious with a judgment, and most probably suspend? 
+
+Conditioning on both opinions, as was just proposed, however, delivers the verdict that both testimonies cancel each other out, entitling you to give \i{full weight} to your own reasoning. That is, the rational response here would be to fully trust your own reasoning and ignore the authorities testimony. This can easily be seen: Recall Equation~\ref{eq:upd} on page~\pageref{eq:upd}. With two testimonies with $\langle \tau_\beta \rangle \approx \langle \tau_\gamma \rangle$ for authorities $\beta, \gamma$
+\[ \Pr(p \given S_\beta p \land S_\gamma \neg p) \approx \Pr(p). \] Of course, now the condition for an undercutting defeater is not fulfilled. If one in any way warms up to the idea that a recognized expert diminishes the reasonability of relying on one's own judgment, this result can't be just accepted. It would spell a depressing result for public discourse for example, whenever experts disagree, just ignore them!  
+
 \subsubsection{The Incomplete Method}
 
-\begin{itemize}
-    \item Look like it'll work out! The condition is fulfilled! But in fact, only rebutting, of course. Visible in cases of two competing authorities
-\end{itemize}
+What, then, potentially alleviates the troublesome news? I think the answer lies in how the trust functions themselves are updated. Here is the rationale: The testimony of an authority diminishes the agent's trust in her own inquisitive abilities regarding the current proposition and propositions just like it. The degree of diminished trust is proportional to the trust the agent places in the authority, and anti-proportional to the trust an agent places in herself. Such that were there a host of experts all testifying, the expected value of trust in her own reasoning and inquisitive abilities in this matter tends to $0.5$. 
 
+How can this idea be made to fit in the Olsson Vallinder model? What's needed is a condition that updates the trust function $\tau_{\iota}(\rho) = \frac{d}{d\rho} \Pr(R_{\iota} = \rho \given S_{\beta})$ such that $\langle \tau_{\iota} \rangle$ tends to $0.5$ when either a sequence of authorities testify or the trust in an authority is particularly high. For this, some general principle has to be invoked which links the rationality of learning the authority's testimony with credences about the agent's own reliability regarding $p$. It might very well be that the notion of an undercutting defeater might play a decisive role here. As it stands, I do not have an answer as to how exactly this updating would calculate, but would very much like to develop something along this line in the future. For this paper, then, this question has to unsatisfactorily go unanswered. 
 
+But we \i{can} have a look at what this means for the credence update:  
 
-
-
+\section{Conclusion}
+Still open questions: Why, really, should an authority who mostly agrees with you constitute an undercutting defeat for your belief? In the case of peer disagreement, it's different!  
 \printbibliography{}
 \end{document}
 
